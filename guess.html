@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>猜數字遊戲</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        #message { margin-top: 1rem; font-weight: bold; }
+        input { width: 5rem; }
+    </style>
+</head>
+<body>
+    <h1>猜數字遊戲 (1-100)</h1>
+    <p>我已經想好一個 1 到 100 之間的數字，請猜一下！</p>
+    <input type="text" id="guessInput" placeholder="輸入數字">
+    <button onclick="makeGuess()">猜猜看</button>
+    <div id="message"></div>
+
+    <script>
+        const target = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function makeGuess() {
+            const input = document.getElementById('guessInput').value.trim();
+            const msgDiv = document.getElementById('message');
+            attempts++;
+
+            // 檢查是否為數字且在 1-100 範圍內
+            if (!/^\d+$/.test(input)) {
+                msgDiv.textContent = '[認真填不然就雷普]';
+                msgDiv.style.color = 'red';
+                return;
+            }
+            const num = Number(input);
+            if (num < 1 || num > 100) {
+                msgDiv.textContent = '[認真填不然就雷普]';
+                msgDiv.style.color = 'red';
+                return;
+            }
+
+            if (num === target) {
+                msgDiv.textContent = `恭喜！你猜對了！數字是 ${target}。共猜了 ${attempts} 次。`;
+                msgDiv.style.color = 'green';
+                // 可選：重新開始
+                // setTimeout(() => location.reload(), 2000);
+            } else if (num > target) {
+                msgDiv.textContent = '猜太大了';
+                msgDiv.style.color = 'orange';
+            } else {
+                msgDiv.textContent = '猜太小了';
+                msgDiv.style.color = 'orange';
+            }
+        }
+
+        // 允許按 Enter 鍵猜測
+        document.getElementById('guessInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                makeGuess();
+            }
+        });
+    </script>
+</body>
+</html>
