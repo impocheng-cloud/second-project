@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品集 - 我的個人網站</title>
+    <style>
+        /* 通用樣式 */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #fff;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        nav {
+            background: #f4f4f4;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-photo.enlarged {
+            transform: scale(1.5);
+            position: relative;
+            z-index: 10;
+        }
+
+        .photo-overlay {
+            display: none;
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .photo-overlay.show {
+            display: block;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .work-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .work-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            padding: 8px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .submit-btn {
+            background: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #f1f1f1;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav>
+        <ul>
+            <li><a href="#home">首頁</a></li>
+            <li><a href="#works">作品區</a></li>
+            <li><a href="#contact">聯絡區</a></li>
+        </ul>
+    </nav>
+
+    <!-- 首頁 -->
+    <section id="home">
+        <div class="container">
+            <div class="profile-section">
+                <div class="photo-container">
+                    <img src="profile.jpg" alt="我的頭貼" id="profilePhoto" class="profile-photo">
+                    <div class="photo-overlay">點擊放大</div>
+                </div>
+                <div class="text-content">
+                    <h1>您的名字</h1>
+                    <p class="intro">一句自我介紹，例如：熱愛前端開發的設計師</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品區 -->
+    <section id="works">
+        <div class="container">
+            <h2>作品區</h2>
+            <div class="works-grid">
+                <!-- 作品1 -->
+                <div class="work-card">
+                    <div class="work-image">
+                        <img src="work1.jpg" alt="作品1">
+                    </div>
+                    <div class="work-info">
+                        <h3>作品標題1</h3>
+                        <p>簡短描述作品1的特色和功能</p>
+                    </div>
+                </div>
+                <!-- 作品2 -->
+                <div class="work-card">
+                    <div class="work-image">
+                        <img src="work2.jpg" alt="作品2">
+                    </div>
+                    <div class="work-info">
+                        <h3>作品標題2</h3>
+                        <p>簡短描述作品2的特色和功能</p>
+                    </div>
+                </div>
+                <!-- 作品3 -->
+                <div class="work-card">
+                    <div class="work-image">
+                        <img src="work3.jpg" alt="作品3">
+                    </div>
+                    <div class="work-info">
+                        <h3>作品標題3</h3>
+                        <p>簡短描述作品3的特色和功能</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡區 -->
+    <section id="contact">
+        <div class="container">
+            <h2>聯絡區</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" name="name" placeholder="請輸入您的姓名" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Gmail</label>
+                    <input type="email" id="email" name="email" placeholder="請輸入您的Gmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">電話</label>
+                    <input type="tel" id="phone" name="phone" placeholder="請輸入您的電話號碼" required>
+                </div>
+                <button type="submit" class="submit-btn">發送訊息</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer>
+        <p>&copy; 2026 作品集網站. 保留所有權利。</p>
+    </footer>
+
+    <script>
+        // Form handling script
+        const form = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const successMessage = document.createElement('div');
+        successMessage.style.marginTop = '20px;';
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Basic validation
+            if (!nameInput.value.trim()) {
+                alert('請輸入姓名');
+                return;
+            }
+            if (!emailInput.value.trim() || !validateEmail(emailInput.value)) {
+                alert('請輸入有效的Gmail');
+                return;
+            }
+            if (!phoneInput.value.trim()) {
+                alert('請輸入電話號碼');
+                return;
+            }
+
+            // Display success message
+            successMessage.textContent = '訊息已送出！我們會尽快與您聯繫。';
+            document.body.appendChild(successMessage);
+
+            // 清空表單 (optional)
+            form.reset();
+        });
+
+        // Email validation function
+        function validateEmail(email) {
+            const re = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+            return re.test(email);
+        }
+
+        // Profile photo enlargement functionality
+        const profilePhoto = document.getElementById('profilePhoto');
+        const photoOverlay = document.querySelector('.photo-overlay');
+
+        profilePhoto.addEventListener('click', function() {
+            // Toggle enlarged class
+            this.classList.toggle('enlarged');
+            photoOverlay.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
