@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>個人作品集 Portfolio</title>
+  <style>
+    /* 基礎全局設定 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    /* 導覽列 */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 1000;
+    }
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #2b5797;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+    .nav-links a:hover {
+      color: #2b5797;
+      font-weight: bold;
+    }
+
+    /* 區塊通用設定 */
+    section {
+      padding: 5rem 2rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+      color: #222;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: #2b5797;
+      margin: 0.5rem auto 0;
+    }
+
+    /* 首頁區塊 (Hero) */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 6rem;
+    }
+    .avatar-container {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      border: 4px solid #fff;
+    }
+    .avatar-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-name {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #1a1a1a;
+    }
+    .hero-bio {
+      font-size: 1.2rem;
+      color: #666;
+      max-width: 600px;
+    }
+
+    /* 作品區塊 (Projects) */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .project-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .project-info {
+      padding: 1.5rem;
+    }
+    .project-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #222;
+    }
+    .project-desc {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* 聯絡區塊 (Contact) */
+    .contact-form {
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #444;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus {
+      border-color: #2b5797;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 0.9rem;
+      background-color: #2b5797;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .submit-btn:hover {
+      background-color: #1d3c6a;
+    }
+
+    /* 頁尾 */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #222;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <header>
+    <nav>
+      <div class="logo">My Portfolio</div>
+      <ul class="nav-links">
+        <li><a href="#hero">首頁</a></li>
+        <li><a href="#projects">作品區</a></li>
+        <li><a href="#contact">聯絡我</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 首頁區 -->
+  <section id="hero">
+    <div class="avatar-container">
+      <!-- 💡 手動替換照片：請將下方 src 的網址改為你的大頭貼圖片路徑 (例如: avatar.jpg) -->
+      <img src="https://via.placeholder.com/160" alt="個人大頭貼">
+    </div>
+    <!-- 💡 手動替換姓名 -->
+    <h1 class="hero-name">您的名字 (Your Name)</h1>
+    <!-- 💡 手動替換自我介紹 -->
+    <p class="hero-bio">這裡是一句簡短的自我介紹，分享你的熱情、專業領域或個人理念！</p>
+  </section>
+
+  <!-- 作品區 -->
+  <section id="projects">
+    <h2 class="section-title">精選作品</h2>
+    <div class="projects-grid">
+      
+      <!-- 作品 1 -->
+      <div class="project-card">
+        <!-- 💡 替換作品圖 1 -->
+        <img src="https://via.placeholder.com/350x200" alt="作品 1" class="project-img">
+        <div class="project-info">
+          <h3 class="project-title">作品名稱一</h3>
+          <p class="project-desc">簡短描述這個作品的背景、使用的技術或設計理念。</p>
+        </div>
+      </div>
+
+      <!-- 作品 2 -->
+      <div class="project-card">
+        <!-- 💡 替換作品圖 2 -->
+        <img src="https://via.placeholder.com/350x200" alt="作品 2" class="project-img">
+        <div class="project-info">
+          <h3 class="project-title">作品名稱二</h3>
+          <p class="project-desc">簡短描述這個作品的背景、使用的技術或設計理念。</p>
+        </div>
+      </div>
+
+      <!-- 作品 3 -->
+      <div class="project-card">
+        <!-- 💡 替換作品圖 3 -->
+        <img src="https://via.placeholder.com/350x200" alt="作品 3" class="project-img">
+        <div class="project-info">
+          <h3 class="project-title">作品名稱三</h3>
+          <p class="project-desc">簡短描述這個作品的背景、使用的技術或設計理念。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 聯絡區 -->
+  <section id="contact">
+    <h2 class="section-title">聯絡我</h2>
+    <form class="contact-form" action="#" method="POST">
+      <div class="form-group">
+        <label for="name">姓名</label>
+        <input type="text" id="name" name="name" placeholder="請輸入您的姓名" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Gmail / 電子郵件</label>
+        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">電話號碼</label>
+        <input type="tel" id="phone" name="phone" placeholder="0912-345-678" required>
+      </div>
+      <button type="submit" class="submit-btn">送出訊息</button>
+    </form>
+  </section>
+
+  <!-- 頁尾 -->
+  <footer>
+    <p>&copy; 2026 個人作品集. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
